@@ -25,10 +25,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh """
-                    docker stop $(docker ps -q) && docker rm $(docker ps -a -q)
-                    docker run --name my-api -p 8080:8080 ${DOCKER_IMAGE_NAME}
-                    """
+                    sh 'docker stop $(docker ps -q) && docker rm $(docker ps -a -q)'
+                    sh 'docker run --name my-api -p 8080:8080 ${DOCKER_IMAGE_NAME}'
                 }
             }
         }
