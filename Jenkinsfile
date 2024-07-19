@@ -27,7 +27,7 @@ pipeline {
                 script {
                     sh """
                     docker stop $(docker ps -q) && docker rm $(docker ps -a -q)
-                    docker run -d --name my-api -p 8080:8080 ${DOCKER_IMAGE_NAME}
+                    docker run --name my-api -p 8080:8080 ${DOCKER_IMAGE_NAME}
                     """
                 }
             }
